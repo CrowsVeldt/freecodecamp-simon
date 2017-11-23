@@ -1,5 +1,7 @@
 # freecodecamp-simon
-Simon, the game, built with React for the FreeCodeCamp front end track
+Simon, the game, built with React for the FreeCodeCamp front end track.
+
+[freeCodeCamp Project Page](https://www.freecodecamp.org/challenges/build-a-simon-game)
 
 ## User Stories:
 
