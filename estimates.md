@@ -30,5 +30,3 @@ Line Count Par  (try to get in under this number): 400 lines, not including node
 ## StepCounter, Estimate: 1 hour
 - Display the number of steps in the current sequence
 - Display "--" on failure
-
-## OnOffToggle
