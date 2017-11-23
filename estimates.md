@@ -1,8 +1,12 @@
+# Estimates
+
+(This is a place for my rough estimates for the project, I'll compare them to the reality when I finish)
+
 Line Count Par: 365 (try to get in under this number)
 
 # Components:
 
-## App
+## App, Estimate: 10 hours
 - State:
 1. gameSequence: array of numbers between 1 and 4
 2. gameType: normal || strict
@@ -14,17 +18,17 @@ Line Count Par: 365 (try to get in under this number)
 3. checkInput
 4. endGame
 
-## ColorButton
+## ColorButton, Estimate: 1 hour
 
   All it has to do is light up and play a tone when activated, and pass the event back to the parent
 
-## FunctionButton
+## FunctionButton, Estimate: 1 hour
 - strict
 - start
 - restart
 
   All these have to do is pass the events to the parent, as well. Really, start and restart may as well be the same button.
 
-  ## StepCounter
+  ## StepCounter, Estimate: 1 hour
   - Display the number of steps in the current sequence
   - Display "--" on failure
