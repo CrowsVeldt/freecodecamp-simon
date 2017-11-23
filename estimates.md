@@ -2,8 +2,7 @@
 
 (This is a place for my rough estimates for the project, I'll compare them to the reality when I finish)
 
-Line Count Par: 365 (try to get in under this number)
-
+Line Count Par  (try to get in under this number): 400 lines, not including node modules, config files, and registerServiceWorker
 # Components:
 
 ## App, Estimate: 10 hours
