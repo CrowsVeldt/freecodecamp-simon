@@ -24,10 +24,11 @@ Line Count Par  (try to get in under this number): 400 lines, not including node
 ## FunctionButton, Estimate: 1 hour
 - strict
 - start
-- restart
 
-  All these have to do is pass the events to the parent, as well. Really, start and restart may as well be the same button.
+  All these have to do is pass the events to the parent, as well.
 
-  ## StepCounter, Estimate: 1 hour
-  - Display the number of steps in the current sequence
-  - Display "--" on failure
+## StepCounter, Estimate: 1 hour
+- Display the number of steps in the current sequence
+- Display "--" on failure
+
+## OnOffToggle
