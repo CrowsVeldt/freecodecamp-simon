@@ -2,7 +2,9 @@
 
 (This is a place for my rough estimates for the project, I'll compare them to the reality when I finish)
 
-Line Count Par  (try to get in under this number): 400 lines, not including node modules, config files, and registerServiceWorker
+## Line Count Par:
+ 400 lines, not including node modules, config files, and registerServiceWorker
+
 # Components:
 
 ## App, Estimate: 10 hours
@@ -30,3 +32,9 @@ Line Count Par  (try to get in under this number): 400 lines, not including node
 ## StepCounter, Estimate: 1 hour
 - Display the number of steps in the current sequence
 - Display "--" on failure
+
+## Total: 13 hours
+
+- Nov 22nd: 6 minutes
+- Nov 23rd: 51 minutes
+- Nov 24th: 53 minutes 
