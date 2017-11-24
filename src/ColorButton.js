@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 class ColorButton extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-    }
-  }
-
   render () {
     return (
-      <Button {...this.props} />
+      <Button
+        {...this.props}
+      />
     )
   }
 }
