@@ -4,9 +4,10 @@ import styled from 'styled-components'
 class ColorButton extends Component {
   render () {
     return (
-      <Button
-        {...this.props}
-      />
+      <Button {...this.props}>
+        {/* look up "ref" for playing the audio */}
+        <audio src={this.props.source} />
+      </Button>
     )
   }
 }
