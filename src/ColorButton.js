@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 class ColorButton extends Component {
+  activateButton () {
+    this.audioElement.play()
+  }
   render () {
     return (
-      <Button {...this.props}>
-        {/* look up "ref" for playing the audio */}
-        <audio>
+      <Button onClick={this.activateButton.bind(this)} {...this.props}>
+        <audio ref={(audio) => { this.audioElement = audio }}>
           <source src={this.props.source} />
         </audio>
       </Button>
