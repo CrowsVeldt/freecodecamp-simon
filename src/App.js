@@ -3,6 +3,20 @@ import styled from 'styled-components'
 import ColorButton from './ColorButton'
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      sequence: []
+    }
+    this.generateNumber.bind(this)
+  }
+
+  generateNumber () {
+    const min = 0
+    const max = 3
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
+
   render () {
     return (
       <Game className='App'>
