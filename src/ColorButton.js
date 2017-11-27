@@ -6,7 +6,9 @@ class ColorButton extends Component {
     return (
       <Button {...this.props}>
         {/* look up "ref" for playing the audio */}
-        <audio src={this.props.source} />
+        <audio>
+          <source src={this.props.source} />
+        </audio>
       </Button>
     )
   }
@@ -20,7 +22,7 @@ const Button = styled.button`
   z-index: 1;
 
   border-radius: ${
-      props => props.green ? '100% 0 0 0'
+    props => props.green ? '100% 0 0 0'
       : props.red ? '0 100% 0 0'
       : props.blue ? '0 0 100% 0'
       : '0 0 0 100%'
@@ -28,23 +30,23 @@ const Button = styled.button`
 
   top: ${
     props => props.green ? '0px'
-    : props.red ? '0px'
-    : props.blue ? '350px'
-    : '350px'
-  };
+      : props.red ? '0px'
+      : props.blue ? '350px'
+      : '350px'
+   };
 
   left: ${
     props => props.green ? '0px'
-    : props.red ? '350px'
-    : props.blue ? '350px'
-    : '0px'
+      : props.red ? '350px'
+      : props.blue ? '350px'
+      : '0px'
   };
 
   background-color: ${
     props => props.green ? 'green'
-    : props.red ? 'red'
-    : props.blue ? 'blue'
-    : 'yellow'
+      : props.red ? 'red'
+      : props.blue ? 'blue'
+      : 'yellow'
   };
 `
 
