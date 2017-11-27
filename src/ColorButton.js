@@ -7,7 +7,10 @@ class ColorButton extends Component {
   }
   render () {
     return (
-      <Button onClick={this.activateButton.bind(this)} {...this.props}>
+      <Button
+        onClick={this.activateButton.bind(this)}
+        {...this.props}
+      >
         <audio ref={(audio) => { this.audioElement = audio }}>
           <source src={this.props.source} />
         </audio>
