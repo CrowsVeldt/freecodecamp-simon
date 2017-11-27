@@ -7,12 +7,26 @@ class App extends Component {
     return (
       <Game className='App'>
         <CenterPanel>
-          <h1>Simon</h1>
+          <h1>
+            Simon
+          </h1>
         </CenterPanel>
-        <ColorButton green source='https://s3.amazonaws.com/freecodecamp/simonSound1.mp3' />
-        <ColorButton red source='https://s3.amazonaws.com/freecodecamp/simonSound2.mp3' />
-        <ColorButton blue source='https://s3.amazonaws.com/freecodecamp/simonSound3.mp3' />
-        <ColorButton yellow source='https://s3.amazonaws.com/freecodecamp/simonSound4.mp3' />
+        <ColorButton
+          green
+          source='https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'
+        />
+        <ColorButton
+          red
+          source='https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'
+        />
+        <ColorButton
+          blue
+          source='https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'
+         />
+        <ColorButton
+          yellow
+          source='https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'
+        />
       </Game>
     )
   }
