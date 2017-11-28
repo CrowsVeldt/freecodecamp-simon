@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 class ColorButton extends Component {
+
   activateButton () {
     this.audioElement.play()
   }
+
   render () {
     return (
       <Button

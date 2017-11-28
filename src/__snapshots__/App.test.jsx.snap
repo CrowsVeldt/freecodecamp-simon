@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="game sc-bwzfXH jEGHCr"
+>
+  <div
+    className="centerPanel sc-htpNat SFyyG"
+  >
+    <h1>
+      Simon
+    </h1>
+    <div
+      className="buttonContainer sc-bxivhb cfzwfq"
+    >
+      <button
+        className="sc-ifAKCX bRRogu"
+      >
+        Play
+      </button>
+    </div>
+  </div>
+  <button
+    className="sc-bdVaJa kdmWDA"
+    onClick={[Function]}
+  >
+    <audio>
+      <source
+        src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
+      />
+    </audio>
+  </button>
+  <button
+    className="sc-bdVaJa kIosMh"
+    onClick={[Function]}
+  >
+    <audio>
+      <source
+        src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"
+      />
+    </audio>
+  </button>
+  <button
+    className="sc-bdVaJa bWISYV"
+    onClick={[Function]}
+  >
+    <audio>
+      <source
+        src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"
+      />
+    </audio>
+  </button>
+  <button
+    className="sc-bdVaJa jLtlvl"
+    onClick={[Function]}
+  >
+    <audio>
+      <source
+        src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+      />
+    </audio>
+  </button>
+</div>
+`;
