@@ -89,7 +89,7 @@ color: white;
 
 export default App
 
-function generateNumber () {
+export function generateNumber () {
   const min = 0
   const max = 3
   return Math.floor(Math.random() * (max - min + 1)) + min
