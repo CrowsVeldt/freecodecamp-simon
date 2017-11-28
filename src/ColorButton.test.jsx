@@ -9,7 +9,6 @@ it('renders without crashing', () => {
 })
 
 it('renders correctly', () => {
-  const tree = renderer
-    .create(<ColorButton topLeft />)
+  const tree = renderer.create(<ColorButton topLeft />)
   expect(tree).toMatchSnapshot()
 })

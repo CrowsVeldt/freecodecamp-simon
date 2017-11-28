@@ -9,12 +9,17 @@ class App extends Component {
       sequence: []
     }
     this.generateNumber.bind(this)
+    this.startGame.bind(this)
   }
 
   generateNumber () {
     const min = 0
     const max = 3
     return Math.floor(Math.random() * (max - min + 1)) + min
+  }
+
+  startGame () {
+    // fill in details here
   }
 
   render () {
