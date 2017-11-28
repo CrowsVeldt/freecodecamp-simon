@@ -6,15 +6,7 @@ class App extends Component {
   constructor (props) {
     super(props)
 
-    this.generateNumber.bind(this)
     this.startGame.bind(this)
-  }
-
-  generateNumber () {
-    // make this an independant function outside of App, to make it easier to test
-    const min = 0
-    const max = 3
-    return Math.floor(Math.random() * (max - min + 1)) + min
   }
 
   startGame () {
@@ -96,3 +88,9 @@ color: white;
 `
 
 export default App
+
+function generateNumber () {
+  const min = 0
+  const max = 3
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
