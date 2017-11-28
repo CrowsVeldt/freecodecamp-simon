@@ -19,11 +19,16 @@ class App extends Component {
 
   render () {
     return (
-      <Game className='App'>
-        <CenterPanel>
+      <Game className='game'>
+        <CenterPanel className='centerPanel'>
           <h1>
             Simon
           </h1>
+          <ButtonContainer className='buttonContainer'>
+            <PlayButton>
+              Play
+            </PlayButton>
+          </ButtonContainer>
         </CenterPanel>
         <ColorButton
           green
@@ -64,6 +69,7 @@ border-radius: 50%;
 height: 300px;
 width: 300px;
 display: flex;
+flex-direction: column;
 justify-content: center;
 align-items: center;
 
@@ -71,6 +77,18 @@ background-color: black;
 color: white;
 
 z-index: 2;
+`
+
+const ButtonContainer = styled.div`
+background-color: tan;
+`
+
+const PlayButton = styled.button`
+border-radius: 100%;
+height: 60px;
+width: 60px;
+background-color: green;
+color: white;
 `
 
 export default App
