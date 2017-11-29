@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`The App component renders correctly 1`] = `
 <div
   className="game sc-bwzfXH jEGHCr"
 >
