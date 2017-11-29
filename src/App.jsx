@@ -21,9 +21,6 @@ class App extends Component {
     })
   }
 
-  playSequence = () => {
-  }
-
   activateButton = (num) => {
     switch (num) {
       case 1:
