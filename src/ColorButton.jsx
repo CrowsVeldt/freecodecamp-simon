@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-class ColorButton extends Component {
-  render () {
-    return (
-      <Button
-        onClick={this.props.onClick}
-        {...this.props}
-        / >
-    )
-  }
+function ColorButton (props) {
+  return (
+    <Button
+      onClick={props.onClick}
+      {...props}
+      />
+  )
 }
 
 const Button = styled.button`
