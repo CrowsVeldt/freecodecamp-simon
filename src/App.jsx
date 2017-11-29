@@ -1,16 +1,24 @@
+import ColorButton from './ColorButton'
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import ColorButton from './ColorButton'
 
 class App extends Component {
   constructor (props) {
     super(props)
 
-    this.startGame.bind(this)
+    this.state = {
+      sequence: [],
+      isPlaying: false
+    }
   }
 
   startGame () {
-    // fill in details here
+    const currentSequence = this.state.sequence
+    currentSequence.push(generateNumber())
+    this.setState({
+      sequence: currentSequence,
+      isPlaying: true
+    })
   }
 
   render () {
@@ -21,7 +29,7 @@ class App extends Component {
             Simon
           </h1>
           <ButtonContainer className='buttonContainer'>
-            <PlayButton>
+            <PlayButton onClick={this.startGame.bind(this)}>
               Play
             </PlayButton>
           </ButtonContainer>

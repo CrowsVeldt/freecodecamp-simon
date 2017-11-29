@@ -15,6 +15,7 @@ exports[`The App component renders correctly 1`] = `
     >
       <button
         className="sc-ifAKCX bRRogu"
+        onClick={[Function]}
       >
         Play
       </button>
