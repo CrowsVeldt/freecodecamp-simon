@@ -12,7 +12,7 @@ class App extends Component {
     }
   }
 
-  startGame () {
+  startGame = () =>  {
     const currentSequence = this.state.sequence
     currentSequence.push(generateNumber())
     this.setState({
@@ -21,35 +21,74 @@ class App extends Component {
     })
   }
 
+  playSequence = () => {
+  }
+
+  activateButton = (num) => {
+    switch (num) {
+      case 1:
+        this.audioElement1.play()
+        break;
+      case 2:
+        this.audioElement2.play()
+        break;
+      case 3:
+        this.audioElement3.play()
+        break;
+      default:
+        this.audioElement4.play()
+        break;
+    
+    }    
+  }
+
   render () {
     return (
       <Game className='game'>
+
         <CenterPanel className='centerPanel'>
           <h1>
             Simon
           </h1>
           <ButtonContainer className='buttonContainer'>
-            <PlayButton onClick={this.startGame.bind(this)}>
+            <PlayButton onClick={this.startGame}>
               Play
             </PlayButton>
           </ButtonContainer>
         </CenterPanel>
+
         <ColorButton
           green
-          source='https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'
+          onClick={() => {this.activateButton(1)}}
         />
+        <audio ref={(audio1) => { this.audioElement1 = audio1 }}>
+          <source src={'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'} />
+        </audio>
+
         <ColorButton
           red
-          source='https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'
+          onClick={() => {this.activateButton(2)}}
         />
+        <audio ref={(audio2) => { this.audioElement2 = audio2 }}>
+          <source src={'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'} />
+        </audio>
+
         <ColorButton
           blue
-          source='https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'
-         />
+          onClick={() => {this.activateButton(3)}}
+        />
+        <audio ref={(audio3) => { this.audioElement3 = audio3 }}>
+          <source src={'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'} />
+        </audio>
+
         <ColorButton
           yellow
-          source='https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'
+          onClick={() => {this.activateButton(4)}}
         />
+        <audio ref={(audio4) => { this.audioElement4 = audio4 }}>
+          <source src={'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'} />
+        </audio>
+
       </Game>
     )
   }
