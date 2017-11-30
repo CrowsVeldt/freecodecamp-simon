@@ -5,6 +5,7 @@ function ColorButton (props) {
   return (
     <Button
       onClick={props.onClick}
+      active
       {...props}
       />
   )
