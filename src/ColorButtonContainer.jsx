@@ -13,6 +13,7 @@ class ColorButtonContainer extends Component {
   }
 
   activateButton = (num) => {
+    //TODO: figure out how to make the button active only when it's pressed (probably useing :active)
     switch (num) {
       case 1:
         this.audioElement1.play()
