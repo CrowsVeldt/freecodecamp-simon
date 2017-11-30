@@ -1,4 +1,4 @@
-import ColorButton from './ColorButton'
+import ColorButtonContainer from './ColorButtonContainer'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -21,24 +21,6 @@ class App extends Component {
     })
   }
 
-  activateButton = (num) => {
-    switch (num) {
-      case 1:
-        this.audioElement1.play()
-        break;
-      case 2:
-        this.audioElement2.play()
-        break;
-      case 3:
-        this.audioElement3.play()
-        break;
-      default:
-        this.audioElement4.play()
-        break;
-    
-    }    
-  }
-
   render () {
     return (
       <Game className='game'>
@@ -48,43 +30,13 @@ class App extends Component {
             Simon
           </h1>
           <ButtonContainer className='buttonContainer'>
-            <PlayButton onClick={this.startGame}>
+            <PlayButton onClick={ this.startGame }>
               Play
             </PlayButton>
           </ButtonContainer>
         </CenterPanel>
 
-        <ColorButton
-          green
-          onClick={() => {this.activateButton(1)}}
-        />
-        <audio ref={(audio1) => { this.audioElement1 = audio1 }}>
-          <source src={'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'} />
-        </audio>
-
-        <ColorButton
-          red
-          onClick={() => {this.activateButton(2)}}
-        />
-        <audio ref={(audio2) => { this.audioElement2 = audio2 }}>
-          <source src={'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'} />
-        </audio>
-
-        <ColorButton
-          blue
-          onClick={() => {this.activateButton(3)}}
-        />
-        <audio ref={(audio3) => { this.audioElement3 = audio3 }}>
-          <source src={'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'} />
-        </audio>
-
-        <ColorButton
-          yellow
-          onClick={() => {this.activateButton(4)}}
-        />
-        <audio ref={(audio4) => { this.audioElement4 = audio4 }}>
-          <source src={'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'} />
-        </audio>
+        <ColorButtonContainer />
 
       </Game>
     )

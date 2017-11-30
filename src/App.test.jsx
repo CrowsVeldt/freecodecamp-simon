@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 import renderer from 'react-test-renderer'
 import App, {generateNumber} from './App'
 
-// Organize the code into describe blocks
-
 describe('The App component', () => {
   
   test('renders without crashing', () => {

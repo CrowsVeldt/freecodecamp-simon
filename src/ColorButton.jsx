@@ -44,6 +44,11 @@ const Button = styled.button`
       : props.blue ? 'blue'
       : 'yellow'
   };
+
+  filter: ${
+    props => props.active ? 'brightness(5)'
+      : 'brightness(1)'
+  };
 `
 
 export default ColorButton
