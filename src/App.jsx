@@ -3,22 +3,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 class App extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      sequence: [],
-      isPlaying: false
-    }
-  }
 
   startGame = () =>  {
-    const currentSequence = this.state.sequence
-    currentSequence.push(generateNumber())
-    this.setState({
-      sequence: currentSequence,
-      isPlaying: true
-    })
+    this.greenButton.click()
   }
 
   render () {
@@ -37,7 +24,7 @@ class App extends Component {
         </CenterPanel>
 
         <ColorButton
-          // ref={(greenButton) => {this.greenButtonRef = greenButton}}
+          buttonRef={button => this.greenButton = button}
           green
           source={'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'}
         />
