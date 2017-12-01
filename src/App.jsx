@@ -4,9 +4,6 @@ import styled from 'styled-components'
 
 class App extends Component {
 
-  startGame = () =>  {
-    this.greenButton.click()
-  }
 
   render () {
     return (
@@ -17,14 +14,13 @@ class App extends Component {
             Simon
           </h1>
           <ButtonContainer className='buttonContainer'>
-            <PlayButton onClick={ this.startGame }>
+            <PlayButton >
               Play
             </PlayButton>
           </ButtonContainer>
         </CenterPanel>
 
         <ColorButton
-          buttonRef={button => this.greenButton = button}
           green
           source={'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'}
         />

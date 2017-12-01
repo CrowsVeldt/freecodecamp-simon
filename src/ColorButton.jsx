@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 
 class ColorButton extends Component {
 
-    handleClick = () => {
-      this.audioElement.play()
-    }
+  simulateClick = () => {
+    ReactDOM.findDOMNode(this.buttonElement).click()
+    console.log('click')
+  } 
+
+  handleClick = () => {
+    this.audioElement.play()
+  }
+
+  componentDidMount () {
+    this.simulateClick()
+  }
 
   render () {
     return (
       <Button
-        ref={this.props.buttonRef}
+        ref={button => this.buttonElement = button}
         onClick={this.handleClick}
         active
         {...this.props}
