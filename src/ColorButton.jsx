@@ -40,16 +40,20 @@ const Button = styled.button`
   };
 
   background-color: ${
-    props => props.green ? 'green'
-      : props.red ? 'red'
-      : props.blue ? 'blue'
-      : 'yellow'
+    props => props.green ? 'RGB(0, 155, 0)'
+      : props.red ? 'RGB(155, 0, 0)'
+      : props.blue ? 'RGB(0, 0, 155)'
+      : 'RGB(155, 155, 0)'
   };
 
-  filter: ${
-    props => props.active ? 'brightness(5)'
-      : 'brightness(1)'
-  };
+  &:active {
+    background-color: ${
+      props => props.green ? 'RGB(0, 255, 0)'
+        : props.red ? 'RGB(255, 0, 0)'
+        : props.blue ? 'RGB(0, 0, 255)'
+        : 'RGB(255, 255, 0)'
+      };
+  }
 `
 
 export default ColorButton

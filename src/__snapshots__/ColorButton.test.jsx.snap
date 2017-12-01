@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <button
-  className="sc-bdVaJa jeLbYk"
+  className="sc-bdVaJa lfqBkn"
   onClick={undefined}
 />
 `;

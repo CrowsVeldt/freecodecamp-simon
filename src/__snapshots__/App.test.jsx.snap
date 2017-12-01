@@ -25,7 +25,7 @@ exports[`The App component renders correctly 1`] = `
     className="colorButtonContainer"
   >
     <button
-      className="greenButton sc-bdVaJa grzJzo"
+      className="sc-bdVaJa ivxUti"
       onClick={[Function]}
     />
     <audio>
@@ -34,7 +34,7 @@ exports[`The App component renders correctly 1`] = `
       />
     </audio>
     <button
-      className="redButton sc-bdVaJa cAQOyh"
+      className="sc-bdVaJa hBZMzp"
       onClick={[Function]}
     />
     <audio>
@@ -43,7 +43,7 @@ exports[`The App component renders correctly 1`] = `
       />
     </audio>
     <button
-      className="blueButton sc-bdVaJa jIocvw"
+      className="sc-bdVaJa ihYLjM"
       onClick={[Function]}
     />
     <audio>
@@ -52,7 +52,7 @@ exports[`The App component renders correctly 1`] = `
       />
     </audio>
     <button
-      className="yellowButton sc-bdVaJa eZqOPx"
+      className="sc-bdVaJa lfqBkn"
       onClick={[Function]}
     />
     <audio>
