@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
-function ColorButton (props) {
-  return (
-    <Button
-      onClick={props.onClick}
-      active
-      {...props}
-      />
-  )
+class ColorButton extends Component {
+
+    handleClick = () => {
+      this.audioElement.play()
+    }
+
+  render () {
+    return (
+      <Button
+        onClick={this.handleClick}
+        active
+        {...this.props}
+      >
+        <audio ref={(audio) => { this.audioElement = audio }}>
+          <source src={this.props.source} />
+        </audio>
+      </Button>
+    )
+  }
 }
 
 const Button = styled.button`

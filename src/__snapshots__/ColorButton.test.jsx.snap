@@ -3,6 +3,12 @@
 exports[`renders correctly 1`] = `
 <button
   className="sc-bdVaJa lfqBkn"
-  onClick={undefined}
-/>
+  onClick={[Function]}
+>
+  <audio>
+    <source
+      src={undefined}
+    />
+  </audio>
+</button>
 `;

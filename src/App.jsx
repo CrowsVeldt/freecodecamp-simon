@@ -1,4 +1,4 @@
-import ColorButtonContainer from './ColorButtonContainer'
+import ColorButton from './ColorButton'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -36,8 +36,27 @@ class App extends Component {
           </ButtonContainer>
         </CenterPanel>
 
-        <ColorButtonContainer />
+        <ColorButton
+          // ref={(greenButton) => {this.greenButtonRef = greenButton}}
+          green
+          source={'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'}
+        />
 
+        <ColorButton
+          red
+          source={'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'}
+
+        />
+
+        <ColorButton
+          blue
+          source={'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'}
+        />
+
+        <ColorButton
+          yellow
+          source={'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'}
+        />
       </Game>
     )
   }
