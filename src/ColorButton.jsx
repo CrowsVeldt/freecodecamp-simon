@@ -5,18 +5,18 @@ class ColorButton extends Component {
   constructor(props) {
     super(props)
     this.state = {
-    class: []
+    class: ''
     }
   }
 
   handleClick = () => {
     this.audioElement.play()
     this.setState({
-      class: ['active']
+      class: 'active'
     })
     setTimeout(() => {
       this.setState({
-        class: ['']
+        class: ''
       })
     }, 400)
   }
@@ -24,7 +24,7 @@ class ColorButton extends Component {
   render () {
     return (
       <Button
-        className={this.state.class.join('')}
+        className={this.state.class}
         ref={this.props.buttonRef}
         onClick={this.handleClick}
         {...this.props}
