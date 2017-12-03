@@ -4,11 +4,20 @@ import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 
 class App extends Component {
-  // quit. Use state to add active prop to child when clicked somehow
-
-  startGame = () => {
-    ReactDOM.findDOMNode(this.yellowButtonRef).click()
+  constructor(props) {
+    super(props)
+    this.state = {
+      gameSequence: [0, 1, 2, 3]
+    }
   }
+
+  playSequence = (sequence) => {
+    // map sequence, and play each button accordingly
+  }
+
+  // startGame = () = {
+  //   ReactDOM.findDOMNode(this.yellowButtonRef).click()
+  // }
 
   render () {
     return (
