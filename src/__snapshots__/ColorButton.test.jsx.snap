@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <button
-  className="sc-bdVaJa lfqBkn"
+  className="sc-bdVaJa gIPCnC"
   onClick={[Function]}
 >
   <audio>

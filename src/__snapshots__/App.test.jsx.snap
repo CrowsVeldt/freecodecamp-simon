@@ -22,7 +22,7 @@ exports[`The App component renders correctly 1`] = `
     </div>
   </div>
   <button
-    className="sc-bdVaJa ivxUti"
+    className="sc-bdVaJa gTtMUm"
     onClick={[Function]}
   >
     <audio>
@@ -32,7 +32,7 @@ exports[`The App component renders correctly 1`] = `
     </audio>
   </button>
   <button
-    className="sc-bdVaJa hBZMzp"
+    className="sc-bdVaJa dKPDLe"
     onClick={[Function]}
   >
     <audio>
@@ -42,7 +42,7 @@ exports[`The App component renders correctly 1`] = `
     </audio>
   </button>
   <button
-    className="sc-bdVaJa ihYLjM"
+    className="sc-bdVaJa WusRQ"
     onClick={[Function]}
   >
     <audio>
@@ -52,7 +52,7 @@ exports[`The App component renders correctly 1`] = `
     </audio>
   </button>
   <button
-    className="sc-bdVaJa lfqBkn"
+    className="sc-bdVaJa gIPCnC"
     onClick={[Function]}
   >
     <audio>

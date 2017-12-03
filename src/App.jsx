@@ -1,9 +1,14 @@
 import ColorButton from './ColorButton'
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 
 class App extends Component {
+  // quit. Use state to add active prop to child when clicked somehow
 
+  startGame = () => {
+    ReactDOM.findDOMNode(this.yellowButtonRef).click()
+  }
 
   render () {
     return (
@@ -14,29 +19,33 @@ class App extends Component {
             Simon
           </h1>
           <ButtonContainer className='buttonContainer'>
-            <PlayButton >
+            <PlayButton onClick={this.startGame}>
               Play
             </PlayButton>
           </ButtonContainer>
         </CenterPanel>
 
         <ColorButton
+          buttonRef={(greenButton) => {this.greenButtonRef = greenButton}}
           green
           source={'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'}
         />
 
         <ColorButton
+          buttonRef={(redButton) => {this.redButtonRef = redButton}}
           red
           source={'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'}
 
         />
 
         <ColorButton
+          buttonRef={(blueButton) => {this.blueButtonRef = blueButton}}
           blue
           source={'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'}
         />
 
         <ColorButton
+          buttonRef={(yellowButton) => {this.yellowButtonRef = yellowButton}}
           yellow
           source={'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'}
         />

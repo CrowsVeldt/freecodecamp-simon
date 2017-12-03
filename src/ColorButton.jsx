@@ -1,28 +1,32 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 
 class ColorButton extends Component {
-
-  simulateClick = () => {
-    ReactDOM.findDOMNode(this.buttonElement).click()
-    console.log('click')
-  } 
+  constructor(props) {
+    super(props)
+    this.state = {
+    class: []
+    }
+  }
 
   handleClick = () => {
     this.audioElement.play()
-  }
-
-  componentDidMount () {
-    this.simulateClick()
+    this.setState({
+      class: ['active']
+    })
+    setTimeout(() => {
+      this.setState({
+        class: ['']
+      })
+    }, 400)
   }
 
   render () {
     return (
       <Button
-        ref={button => this.buttonElement = button}
+        className={this.state.class.join('')}
+        ref={this.props.buttonRef}
         onClick={this.handleClick}
-        active
         {...this.props}
       >
         <audio ref={audio => this.audioElement = audio}>
@@ -68,7 +72,7 @@ const Button = styled.button`
       : 'RGB(155, 155, 0)'
   };
 
-  &:active {
+  &.active {
     background-color: ${
       props => props.green ? 'RGB(0, 255, 0)'
         : props.red ? 'RGB(255, 0, 0)'
