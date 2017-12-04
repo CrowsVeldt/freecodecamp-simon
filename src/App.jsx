@@ -11,13 +11,32 @@ class App extends Component {
     }
   }
 
-  playSequence = (sequence) => {
-    // map sequence, and play each button accordingly
+  playSequence = sequence => {
+    if (sequence.length > 0) {
+      const arrayToPlay = sequence.slice()
+        switch (arrayToPlay.shift()) {
+        case 0:
+          ReactDOM.findDOMNode(this.greenButtonRef).click()
+          break;
+        case 1:
+          ReactDOM.findDOMNode(this.redButtonRef).click()
+          break;
+        case 2:
+          ReactDOM.findDOMNode(this.blueButtonRef).click()
+          break;
+        default:
+          ReactDOM.findDOMNode(this.yellowButtonRef).click()
+          break;
+        }
+      setTimeout(() => { 
+        this.playSequence(arrayToPlay)
+      }, 650)
+    }
   }
 
-  // startGame = () = {
-  //   ReactDOM.findDOMNode(this.yellowButtonRef).click()
-  // }
+  startGame = () => {
+     this.playSequence(this.state.gameSequence)
+   }
 
   render () {
     return (
