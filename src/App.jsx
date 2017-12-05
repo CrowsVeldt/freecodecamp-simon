@@ -7,14 +7,17 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      gameSequence: [0, 1, 2, 3]
+      gameSequence: [],
+      outputModeActive: false
     }
   }
 
-  playSequence = sequence => {
+  playSequence = (sequence) => {
     if (sequence.length > 0) {
-      const arrayToPlay = sequence.slice()
-        switch (arrayToPlay.shift()) {
+      this.setState({
+        outputModeActive: true
+      })
+        switch (sequence[0]) {
         case 0:
           ReactDOM.findDOMNode(this.greenButtonRef).click()
           break;
@@ -28,15 +31,30 @@ class App extends Component {
           ReactDOM.findDOMNode(this.yellowButtonRef).click()
           break;
         }
+      console.log(sequence.slice())
       setTimeout(() => { 
-        this.playSequence(arrayToPlay)
+        this.playSequence(sequence.slice(1))
       }, 650)
+    } else if (sequence.length === 0) {
+      this.setState({
+        outputModeActive: false
+      })
     }
   }
 
+  addToSequence = () => {
+    const newNumber = generateNumber()
+    this.setState(prevState => ({
+      gameSequence: [...prevState.gameSequence, newNumber]
+    })) 
+  }
+
   startGame = () => {
-     this.playSequence(this.state.gameSequence)
-   }
+      this.addToSequence()  
+      setTimeout(() => {
+        this.playSequence(this.state.gameSequence)
+      }, 0)
+  }
 
   render () {
     return (
@@ -47,7 +65,9 @@ class App extends Component {
             Simon
           </h1>
           <ButtonContainer className='buttonContainer'>
-            <PlayButton onClick={this.startGame}>
+            <PlayButton onClick={!this.state.outputModeActive ? 
+                                 this.startGame : 
+                                 undefined}>
               Play
             </PlayButton>
           </ButtonContainer>
