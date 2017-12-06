@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   acceptUserInput = () => {
-    //TODO: wait for the user to press a button, and then call playGame again 
+    //TODO: finish accept input and return to playGame, to add another number to sequence
   }
 
   playGame = () => {
@@ -82,25 +82,29 @@ class App extends Component {
 
         <ColorButton
           buttonRef={(greenButton) => {this.greenButtonRef = greenButton}}
+          onClick={(e) => {this.acceptUserInput()
           green
           source={'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'}
         />
 
         <ColorButton
           buttonRef={(redButton) => {this.redButtonRef = redButton}}
+          onClick={(e) => {this.acceptUserInput()}}
           red
           source={'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'}
 
         />
 
-        <ColorButton
+        (<ColorButton
           buttonRef={(blueButton) => {this.blueButtonRef = blueButton}}
+          onClick={(e) => {this.acceptUserInput()}}
           blue
           source={'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'}
         />
 
         <ColorButton
           buttonRef={(yellowButton) => {this.yellowButtonRef = yellowButton}}
+          onClick={(e) => {this.acceptUserInput()}}
           yellow
           source={'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'}
         />
