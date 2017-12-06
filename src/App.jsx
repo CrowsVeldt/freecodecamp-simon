@@ -8,14 +8,15 @@ class App extends Component {
     super(props)
     this.state = {
       gameSequence: [],
-      outputModeActive: false
+      outputMode: false,
+      inputMode: false
     }
   }
 
   playSequence = (sequence) => {
     if (sequence.length > 0) {
       this.setState({
-        outputModeActive: true
+        outputMode: true
       })
         switch (sequence[0]) {
         case 0:
@@ -37,23 +38,28 @@ class App extends Component {
       }, 650)
     } else if (sequence.length === 0) {
       this.setState({
-        outputModeActive: false
+        outputMode: false
       })
     }
   }
 
-  addToSequence = () => {
-    const newNumber = generateNumber()
-    this.setState(prevState => ({
-      gameSequence: [...prevState.gameSequence, newNumber]
-    })) 
+  acceptUserInput = () => {
+    //TODO: Write something here 
   }
 
   startGame = () => {
-      this.addToSequence()  
-      setTimeout(() => {
-        this.playSequence(this.state.gameSequence)
-      }, 0)
+    this.setState(prevState => ({
+      gameSequence: [...prevState.gameSequence, generateNumber()]
+    }))
+    setTimeout(() => {
+      this.playSequence(this.state.gameSequence)
+    }, 0)
+    setTimeout(() => {
+      this.setState({
+        inputMode: true
+      })
+      this.acceptUserInput()
+    }, 0)
   }
 
   render () {
@@ -65,7 +71,7 @@ class App extends Component {
             Simon
           </h1>
           <ButtonContainer className='buttonContainer'>
-            <PlayButton onClick={!this.state.outputModeActive ? 
+            <PlayButton onClick={!this.state.outputMode ? 
                                  this.startGame : 
                                  undefined}>
               Play
