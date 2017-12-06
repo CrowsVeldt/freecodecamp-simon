@@ -44,13 +44,14 @@ class App extends Component {
   }
 
   acceptUserInput = () => {
-    //TODO: Write something here 
+    //TODO: wait for the user to press a button, and then call playGame again 
   }
 
-  startGame = () => {
+  playGame = () => {
     this.setState(prevState => ({
       gameSequence: [...prevState.gameSequence, generateNumber()]
     }))
+    //TODO: Do async without 'setTimout 0'
     setTimeout(() => {
       this.playSequence(this.state.gameSequence)
     }, 0)
@@ -72,7 +73,7 @@ class App extends Component {
           </h1>
           <ButtonContainer className='buttonContainer'>
             <PlayButton onClick={!this.state.outputMode ? 
-                                 this.startGame : 
+                                 this.playGame : 
                                  undefined}>
               Play
             </PlayButton>
