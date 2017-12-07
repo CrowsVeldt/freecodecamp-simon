@@ -17,7 +17,7 @@ exports[`The App component renders correctly 1`] = `
         className="sc-ifAKCX bRRogu"
         onClick={[Function]}
       >
-        Play
+        Start
       </button>
     </div>
   </div>
@@ -27,7 +27,7 @@ exports[`The App component renders correctly 1`] = `
   >
     <audio>
       <source
-        src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
+        src={undefined}
       />
     </audio>
   </button>
@@ -37,7 +37,7 @@ exports[`The App component renders correctly 1`] = `
   >
     <audio>
       <source
-        src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"
+        src={undefined}
       />
     </audio>
   </button>
@@ -47,7 +47,7 @@ exports[`The App component renders correctly 1`] = `
   >
     <audio>
       <source
-        src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"
+        src={undefined}
       />
     </audio>
   </button>
@@ -57,7 +57,7 @@ exports[`The App component renders correctly 1`] = `
   >
     <audio>
       <source
-        src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+        src={undefined}
       />
     </audio>
   </button>

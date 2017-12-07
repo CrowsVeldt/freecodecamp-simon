@@ -8,15 +8,16 @@ class App extends Component {
     super(props)
     this.state = {
       gameSequence: [],
-      outputMode: false,
-      inputMode: false
+      active: false,
+      outputMode: false
     }
   }
 
   playSequence = (sequence) => {
     if (sequence.length > 0) {
       this.setState({
-        outputMode: true
+        outputMode: true,
+        active: true
       })
         switch (sequence[0]) {
         case 0:
@@ -32,7 +33,6 @@ class App extends Component {
           ReactDOM.findDOMNode(this.yellowButtonRef).click()
           break;
         }
-      console.log(sequence.slice())
       setTimeout(() => { 
         this.playSequence(sequence.slice(1))
       }, 650)
@@ -43,23 +43,18 @@ class App extends Component {
     }
   }
 
-  acceptUserInput = () => {
-    //TODO: finish accept input and return to playGame, to add another number to sequence
+  handleClick = (ref) => {
+    // Button clas should be based on this.state, when pressed change the class to active
+    // and play the tone
+    console.log(ref)
   }
 
-  playGame = () => {
+  startGame = () => {
     this.setState(prevState => ({
       gameSequence: [...prevState.gameSequence, generateNumber()]
     }))
-    //TODO: Do async without 'setTimout 0'
     setTimeout(() => {
       this.playSequence(this.state.gameSequence)
-    }, 0)
-    setTimeout(() => {
-      this.setState({
-        inputMode: true
-      })
-      this.acceptUserInput()
     }, 0)
   }
 
@@ -72,42 +67,51 @@ class App extends Component {
             Simon
           </h1>
           <ButtonContainer className='buttonContainer'>
-            <PlayButton onClick={!this.state.outputMode ? 
-                                 this.playGame : 
-                                 undefined}>
-              Play
-            </PlayButton>
+            <StartButton onClick={!this.state.active ? this.startGame : undefined}>
+              Start
+            </StartButton>
           </ButtonContainer>
         </CenterPanel>
 
         <ColorButton
-          buttonRef={(greenButton) => {this.greenButtonRef = greenButton}}
-          onClick={(e) => {this.acceptUserInput()
+          ref={(greenButton) => {this.greenButtonRef = greenButton}}
+          onClick={(e) => {this.handleClick(this.greenButtonRef)}}
           green
-          source={'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'}
-        />
+        >
+          <audio ref={audio => this.audioElement1 = audio} >
+            <source src='https://s3.amazonaws.com/freecodecamp/simonSound1.mp3' />
+          </audio>
+        </ColorButton>
 
         <ColorButton
-          buttonRef={(redButton) => {this.redButtonRef = redButton}}
-          onClick={(e) => {this.acceptUserInput()}}
+          ref={(redButton) => {this.redButtonRef = redButton}}
+          onClick={(e) => {this.handleClick(this.redButtonRef)}}
           red
-          source={'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'}
-
-        />
-
-        (<ColorButton
-          buttonRef={(blueButton) => {this.blueButtonRef = blueButton}}
-          onClick={(e) => {this.acceptUserInput()}}
-          blue
-          source={'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'}
-        />
+        >
+          <audio ref={audio => this.audioElement2 = audio} >
+            <source src='https://s3.amazonaws.com/freecodecamp/simonSound2.mp3' />
+          </audio>
+        </ColorButton>
 
         <ColorButton
-          buttonRef={(yellowButton) => {this.yellowButtonRef = yellowButton}}
-          onClick={(e) => {this.acceptUserInput()}}
+          ref={(blueButton) => {this.blueButtonRef = blueButton}}
+          onClick={(e) => {this.handleClick(this.blueButtonRef)}}
+          blue
+        >
+          <audio ref={audio => this.audioElement3 = audio} >
+            <source src='https://s3.amazonaws.com/freecodecamp/simonSound3.mp3' />
+          </audio>
+        </ColorButton>
+
+        <ColorButton
+          ref={(yellowButton) => {this.yellowButtonRef = yellowButton}}
+          onClick={(e) => {this.handleClick(this.yellowButtonRef)}}
           yellow
-          source={'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'}
-        />
+        >
+          <audio ref={audio => this.audioElement4 = audio} >
+            <source src='https://s3.amazonaws.com/freecodecamp/simonSound4.mp3' />
+          </audio>
+        </ColorButton>
       </Game>
     )
   }
@@ -145,7 +149,7 @@ const ButtonContainer = styled.div`
 background-color: tan;
 `
 
-const PlayButton = styled.button`
+const StartButton = styled.button`
 border-radius: 100%;
 height: 60px;
 width: 60px;
