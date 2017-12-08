@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      gameSequence: [],
+      gameSequence: [0, 1, 2, 3],
       playerInput: [],
       active: false,
       outputMode: false,
@@ -18,77 +18,19 @@ class App extends Component {
     }
   }
 
-  playSequence = (sequence) => {
-    if (sequence.length > 0) {
-      this.setState({
-        playerInput: [],
-        outputMode: true,
-        active: true
-      })
-        switch (sequence[0]) {
-          case 0:
-            ReactDOM.findDOMNode(this.audioElement0).play()
-            this.setState({
-              greenClass: 'active'
-            })
-            setTimeout(() => {
-              this.setState({
-                greenClass: ''
-              }
-            )}, 550)
-            break;
-          case 1:
-            ReactDOM.findDOMNode(this.audioElement1).play()
-            this.setState({
-              redClass: 'active'
-            })
-            setTimeout(() => { 
-              this.setState({
-                redClass: ''
-              }
-              )} , 550)
-            break;
-          case 2:
-            ReactDOM.findDOMNode(this.audioElement2).play()
-            this.setState({
-              blueClass: 'active'
-            })
-            setTimeout(() => {
-              this.setState({
-                blueClass: ''
-              }
-              )}, 550)
-            break;
-          default:
-            ReactDOM.findDOMNode(this.audioElement3).play()
-            this.setState({
-              yellowClass: 'active'
-            })
-            setTimeout(() => {
-              this.setState({
-                yellowClass: ''
-              }
-              )}, 550)
-            break;
-        }
-      setTimeout(() => { 
-        this.playSequence(sequence.slice(1))
-      }, 650)
-    } else if (sequence.length === 0) {
-      this.setState({
-        outputMode: false,
-      })
-    }
+  addNumberToSequence = () => {
+    this.setState(prevState => ({
+      gameSequence: [...prevState.gameSequence, randomNumber()]
+    }))
   }
 
-  handleClick = (button, audioRef) => {
-    ReactDOM.findDOMNode(audioRef).play()
+  activateButton = (button) => {
     switch (button) {
       case 0:
-        this.setState(prevState => ({
-          playerInput: [...prevState.playerInput, 0],
-          greenClass: 'active'  
-        }))
+        ReactDOM.findDOMNode(this.audioElement0).play()
+        this.setState({
+          greenClass: 'active'
+        })
         setTimeout(() => {
           this.setState({
             greenClass: ''
@@ -96,10 +38,10 @@ class App extends Component {
         }, 550)
         break;
       case 1:
-        this.setState(prevState => ({
-          playerInput: [...prevState.playerInput, 1],
-          redClass: 'active'  
-        }))
+        ReactDOM.findDOMNode(this.audioElement1).play()
+        this.setState({
+          redClass: 'active'
+        })
         setTimeout(() => {
           this.setState({
             redClass: ''
@@ -107,28 +49,56 @@ class App extends Component {
         }, 550)
         break;
       case 2:
-        this.setState(prevState => ({
-          playerInput: [...prevState.playerInput, 2],
+        ReactDOM.findDOMNode(this.audioElement2).play()
+        this.setState({
           blueClass: 'active'
-        }))
+        })
         setTimeout(() => {
           this.setState({
             blueClass: ''
           })
         }, 550)
         break;
-      default:
-        this.setState(prevState => ({
-          playerInput: [...prevState.playerInput, 3],
+      case 3:
+        ReactDOM.findDOMNode(this.audioElement3).play()
+        this.setState({
           yellowClass: 'active'
-        }))
+        })
         setTimeout(() => {
           this.setState({
             yellowClass: ''
           })
         }, 550)
         break;
+      default:
+        console.log('no such button')
+        break;
+
     }
+  }
+
+  playSequence = (sequence) => {
+    if (sequence.length > 0) {
+      this.setState({
+        playerInput: [],
+        outputMode: true,
+      })
+      this.activateButton(sequence[0])
+      setTimeout(() => { 
+        this.playSequence(sequence.slice(1))
+      }, 550)
+    } else if (sequence.length === 0) {
+      this.setState({
+        outputMode: false,
+      })
+    }
+  }
+
+  handleClick = (button) => {
+    this.setState(prevState => ({
+      playerInput: [...prevState.playerInput, button]
+    }))
+    this.activateButton(button)
     this.checkInput()
   }
 
@@ -138,21 +108,22 @@ class App extends Component {
 
     input.forEach((item, index) => {
 
-      if (item !== sequence[index - 1]) {
+      if (item !== sequence[index]) {
         this.setState({
           playerInput: []
         })
         setTimeout(() => {
           this.playSequence(this.state.gameSequence)
-         }, 0)
+         }, 550)
       } 
     })
   }
 
   startGame = () => {
-    this.setState(prevState => ({
-      gameSequence: [...prevState.gameSequence, generateNumber()]
-    }))
+    this.setState({
+      active: true
+    })
+    this.addNumberToSequence()
     setTimeout(() => {
       this.playSequence(this.state.gameSequence)
     }, 0)
@@ -175,9 +146,8 @@ class App extends Component {
 
         <ColorButton
           className={this.state.greenClass}
-          ref={(greenButton) => {this.greenButtonRef = greenButton}}
           onClick={!this.state.outputMode ? 
-                  (e) => {this.handleClick(0, this.audioElement0)} :
+                  (e) => {this.handleClick(0)} :
                   undefined
           }
           green
@@ -189,9 +159,8 @@ class App extends Component {
 
         <ColorButton
           className={this.state.redClass}
-          ref={(redButton) => {this.redButtonRef = redButton}}
           onClick={!this.state.outputMode ? 
-                  (e) => {this.handleClick(1, this.audioElement1)} :
+                  (e) => {this.handleClick(1)} :
                   undefined
           }
           red
@@ -203,9 +172,8 @@ class App extends Component {
 
         <ColorButton
           className={this.state.blueClass}
-          ref={(blueButton) => {this.blueButtonRef = blueButton}}
           onClick={!this.state.outputMode ?
-                  (e) => {this.handleClick(2, this.audioElement2)} :
+                  (e) => {this.handleClick(2)} :
                   undefined
           }
           blue
@@ -217,9 +185,8 @@ class App extends Component {
 
         <ColorButton
           className={this.state.yellowClass}
-          ref={(yellowButton) => {this.yellowButtonRef = yellowButton}}
           onClick={!this.state.outputMode ? 
-                  (e) => {this.handleClick(3, this.audioElement3)} : 
+                  (e) => {this.handleClick(3)} : 
                   undefined
           }
           yellow
@@ -275,7 +242,7 @@ color: white;
 
 export default App
 
-export function generateNumber () {
+export function randomNumber () {
   const min = 0
   const max = 3
   return Math.floor(Math.random() * (max - min + 1)) + min

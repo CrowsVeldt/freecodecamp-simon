@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import renderer from 'react-test-renderer'
-import App, {generateNumber} from './App'
+import App, {randomNumber} from './App'
 
 describe('The App component', () => {
   
@@ -17,12 +17,12 @@ describe('The App component', () => {
 })
 
 
-describe('generateNumber', () => {
+describe('randomNumber', () => {
 
   const arrayOfRandoms = []
 
   for (let i = 0; i < 100; i++) {
-    arrayOfRandoms.push(generateNumber())
+    arrayOfRandoms.push(randomNumber())
   }
 
   test('always returns a number', () => {
