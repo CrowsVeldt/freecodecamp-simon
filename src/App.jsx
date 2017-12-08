@@ -11,7 +11,6 @@ class App extends Component {
       playerInput: [],
       active: false,
       outputMode: false,
-      inputMode: false,
       greenClass: '',
       redClass: '',
       blueClass: '',
@@ -22,21 +21,54 @@ class App extends Component {
   playSequence = (sequence) => {
     if (sequence.length > 0) {
       this.setState({
+        playerInput: [],
         outputMode: true,
         active: true
       })
         switch (sequence[0]) {
           case 0:
-            this.handleClick(0, this.audioElement0)
+            ReactDOM.findDOMNode(this.audioElement0).play()
+            this.setState({
+              greenClass: 'active'
+            })
+            setTimeout(() => {
+              this.setState({
+                greenClass: ''
+              }
+            )}, 550)
             break;
           case 1:
-            this.handleClick(0, this.audioElement0)
+            ReactDOM.findDOMNode(this.audioElement1).play()
+            this.setState({
+              redClass: 'active'
+            })
+            setTimeout(() => { 
+              this.setState({
+                redClass: ''
+              }
+              )} , 550)
             break;
           case 2:
-            this.handleClick(0, this.audioElement0)
+            ReactDOM.findDOMNode(this.audioElement2).play()
+            this.setState({
+              blueClass: 'active'
+            })
+            setTimeout(() => {
+              this.setState({
+                blueClass: ''
+              }
+              )}, 550)
             break;
           default:
-            this.handleClick(0, this.audioElement0)  
+            ReactDOM.findDOMNode(this.audioElement3).play()
+            this.setState({
+              yellowClass: 'active'
+            })
+            setTimeout(() => {
+              this.setState({
+                yellowClass: ''
+              }
+              )}, 550)
             break;
         }
       setTimeout(() => { 
@@ -45,7 +77,6 @@ class App extends Component {
     } else if (sequence.length === 0) {
       this.setState({
         outputMode: false,
-        inputMode: true
       })
     }
   }
@@ -98,6 +129,24 @@ class App extends Component {
         }, 550)
         break;
     }
+    this.checkInput()
+  }
+
+  checkInput = () => {
+    const sequence = this.state.gameSequence
+    const input = this.state.playerInput
+
+    input.forEach((item, index) => {
+
+      if (item !== sequence[index - 1]) {
+        this.setState({
+          playerInput: []
+        })
+        setTimeout(() => {
+          this.playSequence(this.state.gameSequence)
+         }, 0)
+      } 
+    })
   }
 
   startGame = () => {
@@ -127,7 +176,7 @@ class App extends Component {
         <ColorButton
           className={this.state.greenClass}
           ref={(greenButton) => {this.greenButtonRef = greenButton}}
-          onClick={this.state.inputMode ? 
+          onClick={!this.state.outputMode ? 
                   (e) => {this.handleClick(0, this.audioElement0)} :
                   undefined
           }
@@ -141,7 +190,7 @@ class App extends Component {
         <ColorButton
           className={this.state.redClass}
           ref={(redButton) => {this.redButtonRef = redButton}}
-          onClick={this.state.inputMode ? 
+          onClick={!this.state.outputMode ? 
                   (e) => {this.handleClick(1, this.audioElement1)} :
                   undefined
           }
@@ -155,7 +204,7 @@ class App extends Component {
         <ColorButton
           className={this.state.blueClass}
           ref={(blueButton) => {this.blueButtonRef = blueButton}}
-          onClick={this.state.inputMode ?
+          onClick={!this.state.outputMode ?
                   (e) => {this.handleClick(2, this.audioElement2)} :
                   undefined
           }
@@ -169,7 +218,7 @@ class App extends Component {
         <ColorButton
           className={this.state.yellowClass}
           ref={(yellowButton) => {this.yellowButtonRef = yellowButton}}
-          onClick={this.state.inputMode ? 
+          onClick={!this.state.outputMode ? 
                   (e) => {this.handleClick(3, this.audioElement3)} : 
                   undefined
           }

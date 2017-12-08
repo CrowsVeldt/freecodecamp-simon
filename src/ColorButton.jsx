@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-class ColorButton extends Component {
-  render () {
-    return (
-      <Button
-        className={this.props.class}
-        {...this.props}
-      />
-    )
-  }
+function ColorButton (props) {
+  return (
+    <Button
+      className={props.class}
+      {...props}
+    />
+  )
 }
 
 const Button = styled.button`
