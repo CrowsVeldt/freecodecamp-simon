@@ -3,12 +3,5 @@
 exports[`renders correctly 1`] = `
 <button
   className="sc-bdVaJa gIPCnC"
-  onClick={[Function]}
->
-  <audio>
-    <source
-      src={undefined}
-    />
-  </audio>
-</button>
+/>
 `;

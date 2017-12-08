@@ -23,41 +23,41 @@ exports[`The App component renders correctly 1`] = `
   </div>
   <button
     className="sc-bdVaJa gTtMUm"
-    onClick={[Function]}
+    onClick={undefined}
   >
     <audio>
       <source
-        src={undefined}
+        src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
       />
     </audio>
   </button>
   <button
     className="sc-bdVaJa dKPDLe"
-    onClick={[Function]}
+    onClick={undefined}
   >
     <audio>
       <source
-        src={undefined}
+        src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"
       />
     </audio>
   </button>
   <button
     className="sc-bdVaJa WusRQ"
-    onClick={[Function]}
+    onClick={undefined}
   >
     <audio>
       <source
-        src={undefined}
+        src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"
       />
     </audio>
   </button>
   <button
     className="sc-bdVaJa gIPCnC"
-    onClick={[Function]}
+    onClick={undefined}
   >
     <audio>
       <source
-        src={undefined}
+        src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
       />
     </audio>
   </button>

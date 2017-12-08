@@ -8,8 +8,14 @@ class App extends Component {
     super(props)
     this.state = {
       gameSequence: [],
+      playerInput: [],
       active: false,
-      outputMode: false
+      outputMode: false,
+      inputMode: false,
+      greenClass: '',
+      redClass: '',
+      blueClass: '',
+      yellowClass: ''
     }
   }
 
@@ -20,33 +26,78 @@ class App extends Component {
         active: true
       })
         switch (sequence[0]) {
-        case 0:
-          ReactDOM.findDOMNode(this.greenButtonRef).click()
-          break;
-        case 1:
-          ReactDOM.findDOMNode(this.redButtonRef).click()
-          break;
-        case 2:
-          ReactDOM.findDOMNode(this.blueButtonRef).click()
-          break;
-        default:
-          ReactDOM.findDOMNode(this.yellowButtonRef).click()
-          break;
+          case 0:
+            this.handleClick(0, this.audioElement0)
+            break;
+          case 1:
+            this.handleClick(0, this.audioElement0)
+            break;
+          case 2:
+            this.handleClick(0, this.audioElement0)
+            break;
+          default:
+            this.handleClick(0, this.audioElement0)  
+            break;
         }
       setTimeout(() => { 
         this.playSequence(sequence.slice(1))
       }, 650)
     } else if (sequence.length === 0) {
       this.setState({
-        outputMode: false
+        outputMode: false,
+        inputMode: true
       })
     }
   }
 
-  handleClick = (ref) => {
-    // Button clas should be based on this.state, when pressed change the class to active
-    // and play the tone
-    console.log(ref)
+  handleClick = (button, audioRef) => {
+    ReactDOM.findDOMNode(audioRef).play()
+    switch (button) {
+      case 0:
+        this.setState(prevState => ({
+          playerInput: [...prevState.playerInput, 0],
+          greenClass: 'active'  
+        }))
+        setTimeout(() => {
+          this.setState({
+            greenClass: ''
+          })
+        }, 550)
+        break;
+      case 1:
+        this.setState(prevState => ({
+          playerInput: [...prevState.playerInput, 1],
+          redClass: 'active'  
+        }))
+        setTimeout(() => {
+          this.setState({
+            redClass: ''
+          })
+        }, 550)
+        break;
+      case 2:
+        this.setState(prevState => ({
+          playerInput: [...prevState.playerInput, 2],
+          blueClass: 'active'
+        }))
+        setTimeout(() => {
+          this.setState({
+            blueClass: ''
+          })
+        }, 550)
+        break;
+      default:
+        this.setState(prevState => ({
+          playerInput: [...prevState.playerInput, 3],
+          yellowClass: 'active'
+        }))
+        setTimeout(() => {
+          this.setState({
+            yellowClass: ''
+          })
+        }, 550)
+        break;
+    }
   }
 
   startGame = () => {
@@ -74,41 +125,57 @@ class App extends Component {
         </CenterPanel>
 
         <ColorButton
+          className={this.state.greenClass}
           ref={(greenButton) => {this.greenButtonRef = greenButton}}
-          onClick={(e) => {this.handleClick(this.greenButtonRef)}}
+          onClick={this.state.inputMode ? 
+                  (e) => {this.handleClick(0, this.audioElement0)} :
+                  undefined
+          }
           green
         >
-          <audio ref={audio => this.audioElement1 = audio} >
+          <audio ref={(audio) => {this.audioElement0 = audio}} >
             <source src='https://s3.amazonaws.com/freecodecamp/simonSound1.mp3' />
           </audio>
         </ColorButton>
 
         <ColorButton
+          className={this.state.redClass}
           ref={(redButton) => {this.redButtonRef = redButton}}
-          onClick={(e) => {this.handleClick(this.redButtonRef)}}
+          onClick={this.state.inputMode ? 
+                  (e) => {this.handleClick(1, this.audioElement1)} :
+                  undefined
+          }
           red
         >
-          <audio ref={audio => this.audioElement2 = audio} >
+          <audio ref={audio => this.audioElement1 = audio} >
             <source src='https://s3.amazonaws.com/freecodecamp/simonSound2.mp3' />
           </audio>
         </ColorButton>
 
         <ColorButton
+          className={this.state.blueClass}
           ref={(blueButton) => {this.blueButtonRef = blueButton}}
-          onClick={(e) => {this.handleClick(this.blueButtonRef)}}
+          onClick={this.state.inputMode ?
+                  (e) => {this.handleClick(2, this.audioElement2)} :
+                  undefined
+          }
           blue
         >
-          <audio ref={audio => this.audioElement3 = audio} >
+          <audio ref={audio => this.audioElement2 = audio} >
             <source src='https://s3.amazonaws.com/freecodecamp/simonSound3.mp3' />
           </audio>
         </ColorButton>
 
         <ColorButton
+          className={this.state.yellowClass}
           ref={(yellowButton) => {this.yellowButtonRef = yellowButton}}
-          onClick={(e) => {this.handleClick(this.yellowButtonRef)}}
+          onClick={this.state.inputMode ? 
+                  (e) => {this.handleClick(3, this.audioElement3)} : 
+                  undefined
+          }
           yellow
         >
-          <audio ref={audio => this.audioElement4 = audio} >
+          <audio ref={audio => this.audioElement3 = audio} >
             <source src='https://s3.amazonaws.com/freecodecamp/simonSound4.mp3' />
           </audio>
         </ColorButton>

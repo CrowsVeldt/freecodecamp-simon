@@ -2,37 +2,12 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 class ColorButton extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-    class: ''
-    }
-  }
-
-  handleClick = () => {
-    this.audioElement.play()
-    this.setState({
-      class: 'active'
-    })
-    setTimeout(() => {
-      this.setState({
-        class: ''
-      })
-    }, 400)
-  }
-
   render () {
     return (
       <Button
-        className={this.state.class}
-        ref={this.props.buttonRef}
-        onClick={this.handleClick}
+        className={this.props.class}
         {...this.props}
-      >
-        <audio ref={audio => this.audioElement = audio}>
-          <source src={this.props.source} />
-        </audio>
-      </Button>
+      />
     )
   }
 }
