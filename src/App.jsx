@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      gameSequence: [0, 1, 2, 3],
+      gameSequence: [],
       playerInput: [],
       active: false,
       outputMode: false,
@@ -80,7 +80,6 @@ class App extends Component {
   playSequence = (sequence) => {
     if (sequence.length > 0) {
       this.setState({
-        playerInput: [],
         outputMode: true,
       })
       this.activateButton(sequence[0])
@@ -99,24 +98,32 @@ class App extends Component {
       playerInput: [...prevState.playerInput, button]
     }))
     this.activateButton(button)
-    this.checkInput()
+    this.checkInput(button, this.state.playerInput.length)
   }
 
-  checkInput = () => {
-    const sequence = this.state.gameSequence
-    const input = this.state.playerInput
+  checkInput = (currentNumber, index) => {
+    const currentIndex = this.state.gameSequence[index]
+    if (currentNumber !== currentIndex) {
+      this.setState({
+        playerInput: []
+      })
+      setTimeout(() => {
+        this.playSequence(this.state.gameSequence)
+      }, 550)
+    } else if (currentNumber === currentIndex && this.state.playerInput.length === 20) {
 
-    input.forEach((item, index) => {
+      this.setState({
+        gameSequence: [],
+        active: false
+      })
+      console.log('You WON!')
+    } else if (currentNumber === currentIndex) {
 
-      if (item !== sequence[index]) {
-        this.setState({
-          playerInput: []
-        })
-        setTimeout(() => {
-          this.playSequence(this.state.gameSequence)
-         }, 550)
-      } 
-    })
+      this.addNumberToSequence()
+      setTimeout(() => {
+        this.playSequence(this.state.gameSequence)
+      }, 550)
+    }
   }
 
   startGame = () => {
