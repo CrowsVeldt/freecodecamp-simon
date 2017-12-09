@@ -10,6 +10,7 @@ class App extends Component {
       gameSequence: [],
       playerInput: [],
       active: false,
+      strictMode: false,
       outputMode: false,
       greenClass: '',
       redClass: '',
@@ -111,7 +112,10 @@ class App extends Component {
     const inputLength = this.state.playerInput.length
 
     if (this.state.strictMode === true && number !== sequence[inputLength - 1]) {
-      // this.startGame()
+      this.setState({
+        mistake: true
+      })
+      setTimeout(this.startGame, 1000)
     } else if (number !== sequence[inputLength - 1]) {
       this.setState({
         playerInput: [],
@@ -162,9 +166,18 @@ class App extends Component {
           <Title className='title'>
             Simon
           </Title>
+          <Toggle className='strictToggle' onClick={() => {
+            this.setState(prevState => ({
+              strictMode: true
+            }))
+          }}>
+            Strict
+          </Toggle>
           <MoveDisplay className='display'>
             <p className='displayText'>
               {
+                !this.state.active ?
+                  '' :
                 this.state.mistake ? 
                   '!!!!!' : 
                 this.state.gameWon ?
@@ -292,6 +305,12 @@ align-items: center;
 const Title = styled.h1`
 font-size: 70px;
 text-shadow: 3px 3px 8px black;
+margin: 20px;
+`
+
+const Toggle = styled.button`
+background-color: light-blue;
+margin: 10px;
 `
 
 export default App

@@ -8,17 +8,23 @@ exports[`The App component renders correctly 1`] = `
     className="centerPanel sc-htpNat lneiwk"
   >
     <h1
-      className="title sc-bZQynM hPSyUB"
+      className="title sc-bZQynM ydTJC"
     >
       Simon
     </h1>
+    <button
+      className="strictToggle sc-gzVnrw gQEOXq"
+      onClick={[Function]}
+    >
+      Strict
+    </button>
     <div
       className="display sc-EHOje goqDXU"
     >
       <p
         className="displayText"
       >
-        0
+        
       </p>
     </div>
     <div
