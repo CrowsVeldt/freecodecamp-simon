@@ -144,6 +144,12 @@ class App extends Component {
     }
   }
 
+  toggleStrict = () => {
+    this.setState(prevState => ({
+      strictMode: !prevState.strictMode
+    }))
+  }
+
   startGame = () => {
     this.setState({
       gameSequence: [],
@@ -163,16 +169,20 @@ class App extends Component {
       <Game className='game'>
 
         <CenterPanel className='centerPanel'>
+
           <Title className='title'>
             Simon
           </Title>
-          <Toggle className='strictToggle' onClick={() => {
-            this.setState(prevState => ({
-              strictMode: true
-            }))
-          }}>
-            Strict
-          </Toggle>
+
+          <label for='strictToggle'>
+            {
+              this.state.strictMode ?
+                'Strict Mode' :
+                'Normal Mode'
+            }
+          </label>
+          <Toggle type='checkbox' id='strictToggle' onChange={this.toggleStrict} />
+
           <MoveDisplay className='display'>
             <p className='displayText'>
               {
@@ -182,27 +192,39 @@ class App extends Component {
                   '!!!!!' : 
                 this.state.gameWon ?
                   'WINNER' :
-                  this.state.gameSequence.length
-
+                this.state.gameSequence.length
               }
             </p>
           </MoveDisplay>
+
           <ButtonContainer className='buttonContainer'>
-            <StartButton className='start' onClick={!this.state.active ? this.startGame : undefined}>
+            <StartButton 
+              className='start' 
+              onClick={
+                !this.state.active ? 
+                  this.startGame : 
+                  undefined}
+            >
               Start
             </StartButton>
-            <StartButton className='restart' onClick={this.state.active ? this.startGame : undefined}>
+            <StartButton 
+              className='restart' 
+              onClick={
+                this.state.active ? 
+                  this.startGame : 
+                  undefined}
+            >
               Restart
             </StartButton>
           </ButtonContainer>
+
         </CenterPanel>
 
         <ColorButton
           className={this.state.greenClass}
           onClick={!this.state.outputMode ? 
                   (e) => {this.handleClick(0)} :
-                  undefined
-          }
+                  undefined}
           green
         >
           <audio ref={(audio) => {this.audioElement0 = audio}} >
@@ -214,8 +236,7 @@ class App extends Component {
           className={this.state.redClass}
           onClick={!this.state.outputMode ? 
                   (e) => {this.handleClick(1)} :
-                  undefined
-          }
+                  undefined}
           red
         >
           <audio ref={audio => this.audioElement1 = audio} >
@@ -227,8 +248,7 @@ class App extends Component {
           className={this.state.blueClass}
           onClick={!this.state.outputMode ?
                   (e) => {this.handleClick(2)} :
-                  undefined
-          }
+                  undefined}
           blue
         >
           <audio ref={audio => this.audioElement2 = audio} >
@@ -240,8 +260,7 @@ class App extends Component {
           className={this.state.yellowClass}
           onClick={!this.state.outputMode ? 
                   (e) => {this.handleClick(3)} : 
-                  undefined
-          }
+                  undefined}
           yellow
         >
           <audio ref={audio => this.audioElement3 = audio} >
@@ -308,9 +327,24 @@ text-shadow: 3px 3px 8px black;
 margin: 20px;
 `
 
-const Toggle = styled.button`
-background-color: light-blue;
-margin: 10px;
+const Toggle = styled.input`
+appearance: none;
+border: 1px solid black;
+border-radius: 50%;
+height: 20px;
+width: 20px;
+position: relative;
+
+&::before {
+  content: '';
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 17px;
+  width: 17px;
+  position: absolute;
+  right: 10px;
+  bottom: 1px;
+}
 `
 
 export default App
