@@ -98,8 +98,7 @@ class App extends Component {
 
   handleClick = (button) => {
     this.setState(prevState => ({
-      playerInput: [...prevState.playerInput, button],
-      inputMode: true
+      playerInput: [...prevState.playerInput, button]
     }))
     this.activateButton(button)
     setTimeout(() => {
@@ -112,7 +111,7 @@ class App extends Component {
     const inputLength = this.state.playerInput.length
 
     if (this.state.strictMode === true && number !== sequence[inputLength - 1]) {
-      this.startGame()
+      // this.startGame()
     } else if (number !== sequence[inputLength - 1]) {
       this.setState({
         playerInput: [],
