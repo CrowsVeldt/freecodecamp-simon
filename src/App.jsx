@@ -14,7 +14,9 @@ class App extends Component {
       greenClass: '',
       redClass: '',
       blueClass: '',
-      yellowClass: ''
+      yellowClass: '',
+      mistake: false,
+      gameWon: false
     }
   }
 
@@ -81,6 +83,7 @@ class App extends Component {
     if (sequence.length > 0) {
       this.setState({
         outputMode: true,
+        mistake: false
       })
       this.activateButton(sequence[0])
       setTimeout(() => { 
@@ -95,7 +98,8 @@ class App extends Component {
 
   handleClick = (button) => {
     this.setState(prevState => ({
-      playerInput: [...prevState.playerInput, button]
+      playerInput: [...prevState.playerInput, button],
+      inputMode: true
     }))
     this.activateButton(button)
     setTimeout(() => {
@@ -107,22 +111,25 @@ class App extends Component {
     const sequence = this.state.gameSequence
     const inputLength = this.state.playerInput.length
 
-    if (number !== sequence[inputLength - 1]) {
+    if (this.state.strictMode === true && number !== sequence[inputLength - 1]) {
+      this.startGame()
+    } else if (number !== sequence[inputLength - 1]) {
       this.setState({
-        playerInput: []
+        playerInput: [],
+        mistake: true
       })
       setTimeout(() => {
         this.playSequence(this.state.gameSequence)
-      }, 750)
+      }, 1000)
     } else if (inputLength !== sequence.length) {
       return
     } else if (inputLength === 20) {
       this.setState({
         gameSequence: [],
         playerInput: [],
-        active: false
+        active: false,
+        gameWon: true
       })
-      console.log('You WIN!')
     } else {
       this.setState({
         playerInput: []
@@ -130,13 +137,17 @@ class App extends Component {
       this.addNumberToSequence()
       setTimeout(() => {
         this.playSequence(this.state.gameSequence)
-      }, 750)
+      }, 1000)
     }
   }
 
   startGame = () => {
     this.setState({
-      active: true
+      gameSequence: [],
+      playerInput: [],
+      active: true,
+      outputMode: false,
+      gameWon: false
     })
     this.addNumberToSequence()
     setTimeout(() => {
@@ -149,12 +160,27 @@ class App extends Component {
       <Game className='game'>
 
         <CenterPanel className='centerPanel'>
-          <h1>
+          <Title className='title'>
             Simon
-          </h1>
+          </Title>
+          <MoveDisplay className='display'>
+            <p className='displayText'>
+              {
+                this.state.mistake ? 
+                  '!!!!!' : 
+                this.state.gameWon ?
+                  'WINNER' :
+                  this.state.gameSequence.length
+
+              }
+            </p>
+          </MoveDisplay>
           <ButtonContainer className='buttonContainer'>
-            <StartButton onClick={!this.state.active ? this.startGame : undefined}>
+            <StartButton className='start' onClick={!this.state.active ? this.startGame : undefined}>
               Start
+            </StartButton>
+            <StartButton className='restart' onClick={this.state.active ? this.startGame : undefined}>
+              Restart
             </StartButton>
           </ButtonContainer>
         </CenterPanel>
@@ -237,14 +263,13 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 
-background-color: black;
-color: white;
+background-color: tan;
+color: black;
 
 z-index: 2;
 `
 
 const ButtonContainer = styled.div`
-background-color: tan;
 `
 
 const StartButton = styled.button`
@@ -253,6 +278,21 @@ height: 60px;
 width: 60px;
 background-color: green;
 color: white;
+`
+
+const MoveDisplay = styled.div`
+background-color: black;
+color: white;
+height: 30px;
+width: 60px;
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+const Title = styled.h1`
+font-size: 70px;
+text-shadow: 3px 3px 8px black;
 `
 
 export default App
