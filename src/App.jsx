@@ -335,15 +335,8 @@ height: 20px;
 width: 20px;
 position: relative;
 
-&::before {
-  content: '';
-  border: 1px solid black;
-  border-radius: 50%;
-  height: 17px;
-  width: 17px;
-  position: absolute;
-  right: 10px;
-  bottom: 1px;
+&:checked {
+  background-color: green;
 }
 `
 
