@@ -293,10 +293,8 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-
 background-color: tan;
 color: black;
-
 z-index: 2;
 `
 
