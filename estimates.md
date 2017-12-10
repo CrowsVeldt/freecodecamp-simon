@@ -4,6 +4,7 @@
 
 ## Line Count Par:
  400 lines, not including node modules, config files, and registerServiceWorker
+(actual count: 474 including tests, 407 without. Not bad)
 
 # Components:
 
@@ -38,3 +39,4 @@
 - Nov 22nd: 6 minutes
 - Nov 23rd: 51 minutes
 - Nov 24th: 53 minutes 
+(lost track because I forgot to configure WakaTime to work with the editor (facepalm)
