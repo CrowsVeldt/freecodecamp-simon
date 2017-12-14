@@ -5,19 +5,24 @@ exports[`The App component renders correctly 1`] = `
   className="game sc-bwzfXH jEGHCr"
 >
   <div
-    className="centerPanel sc-htpNat lneiwk"
+    className="centerPanel sc-htpNat gTuZQC"
   >
     <h1
       className="title sc-bZQynM ydTJC"
     >
       Simon
     </h1>
-    <button
-      className="strictToggle sc-gzVnrw gQEOXq"
-      onClick={[Function]}
+    <label
+      htmlFor="strictToggle"
     >
-      Strict
-    </button>
+      Strict Mode
+    </label>
+    <input
+      className="sc-gzVnrw kvrUSF"
+      id="strictToggle"
+      onChange={[Function]}
+      type="checkbox"
+    />
     <div
       className="display sc-EHOje goqDXU"
     >
