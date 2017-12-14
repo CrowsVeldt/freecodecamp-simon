@@ -12,10 +12,6 @@ class App extends Component {
       active: false,
       strictMode: false,
       outputMode: false,
-      greenClass: '',
-      redClass: '',
-      blueClass: '',
-      yellowClass: '',
       mistake: false,
       gameWon: false
     }
@@ -28,56 +24,37 @@ class App extends Component {
   }
 
   activateButton = (button) => {
+    let buttonTitle
     switch (button) {
       case 0:
+        buttonTitle = 'greenClass'
         ReactDOM.findDOMNode(this.audioElement0).play()
-        this.setState({
-          greenClass: 'active'
-        })
-        setTimeout(() => {
-          this.setState({
-            greenClass: ''
-          })
-        }, 550)
         break;
       case 1:
+        buttonTitle = 'redClass'
         ReactDOM.findDOMNode(this.audioElement1).play()
-        this.setState({
-          redClass: 'active'
-        })
-        setTimeout(() => {
-          this.setState({
-            redClass: ''
-          })
-        }, 550)
         break;
       case 2:
+        buttonTitle = 'blueClass'
         ReactDOM.findDOMNode(this.audioElement2).play()
-        this.setState({
-          blueClass: 'active'
-        })
-        setTimeout(() => {
-          this.setState({
-            blueClass: ''
-          })
-        }, 550)
         break;
       case 3:
+        buttonTitle = 'yellowClass'
         ReactDOM.findDOMNode(this.audioElement3).play()
-        this.setState({
-          yellowClass: 'active'
-        })
-        setTimeout(() => {
-          this.setState({
-            yellowClass: ''
-          })
-        }, 550)
         break;
       default:
-        console.log('no such button')
+        console.log('erronious button number, get help!')
         break;
-
     }
+
+    this.setState({
+      [buttonTitle]: 'active'
+    })
+    setTimeout(() => {
+      this.setState({
+        [buttonTitle]: ''
+      })
+    }, 550)
   }
 
   playSequence = (sequence) => {
@@ -174,12 +151,8 @@ class App extends Component {
             Simon
           </Title>
 
-          <label for='strictToggle'>
-            {
-              this.state.strictMode ?
-                'Strict Mode' :
-                'Normal Mode'
-            }
+          <label htmlFor='strictToggle'>
+            Strict Mode
           </label>
           <Toggle type='checkbox' id='strictToggle' onChange={this.toggleStrict} />
 
