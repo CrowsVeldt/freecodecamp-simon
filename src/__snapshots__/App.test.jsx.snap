@@ -2,10 +2,10 @@
 
 exports[`The App component renders correctly 1`] = `
 <div
-  className="game sc-bwzfXH jEGHCr"
+  className="game sc-htpNat hvWdwl"
 >
   <div
-    className="centerPanel sc-htpNat gTuZQC"
+    className="centerPanel sc-bxivhb acIYU"
   >
     <h1
       className="title sc-bZQynM ydTJC"
@@ -24,28 +24,20 @@ exports[`The App component renders correctly 1`] = `
       type="checkbox"
     />
     <div
-      className="display sc-EHOje goqDXU"
+      className="sc-bwzfXH csrREz"
     >
-      <p
-        className="displayText"
-      >
+      <p>
         
       </p>
     </div>
     <div
-      className="buttonContainer sc-bxivhb eBNJKg"
+      className="buttonContainer sc-ifAKCX bmKgXx"
     >
       <button
-        className="start sc-ifAKCX bRRogu"
+        className="start sc-EHOje cwhqGh"
         onClick={[Function]}
       >
         Start
-      </button>
-      <button
-        className="restart sc-ifAKCX bRRogu"
-        onClick={undefined}
-      >
-        Restart
       </button>
     </div>
   </div>

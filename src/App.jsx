@@ -1,4 +1,5 @@
 import ColorButton from './ColorButton'
+import Display from './Display'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
@@ -12,8 +13,7 @@ class App extends Component {
       active: false,
       strictMode: false,
       outputMode: false,
-      mistake: false,
-      gameWon: false
+      displayValue: ''
     }
   }
 
@@ -61,7 +61,7 @@ class App extends Component {
     if (sequence.length > 0) {
       this.setState({
         outputMode: true,
-        mistake: false
+        displayValue: this.state.gameSequence.length
       })
       this.activateButton(sequence[0])
       setTimeout(() => { 
@@ -90,13 +90,13 @@ class App extends Component {
 
     if (this.state.strictMode === true && number !== sequence[inputLength - 1]) {
       this.setState({
-        mistake: true
+        displayValue: '!!!!!'
       })
       setTimeout(this.startGame, 1000)
     } else if (number !== sequence[inputLength - 1]) {
       this.setState({
         playerInput: [],
-        mistake: true
+        displayValue: '!!!!!'
       })
       setTimeout(() => {
         this.playSequence(this.state.gameSequence)
@@ -108,7 +108,7 @@ class App extends Component {
         gameSequence: [],
         playerInput: [],
         active: false,
-        gameWon: true
+        displayValue: 'WINNER'
       })
     } else {
       this.setState({
@@ -133,7 +133,7 @@ class App extends Component {
       playerInput: [],
       active: true,
       outputMode: false,
-      gameWon: false
+      displayValue: ''
     })
     this.addNumberToSequence()
     setTimeout(() => {
@@ -156,38 +156,11 @@ class App extends Component {
           </label>
           <Toggle type='checkbox' id='strictToggle' onChange={this.toggleStrict} />
 
-          <MoveDisplay className='display'>
-            <p className='displayText'>
-              {
-                !this.state.active ?
-                  '' :
-                this.state.mistake ? 
-                  '!!!!!' : 
-                this.state.gameWon ?
-                  'WINNER' :
-                this.state.gameSequence.length
-              }
-            </p>
-          </MoveDisplay>
+          <Display className='display' title={this.state.displayValue} /> 
 
           <ButtonContainer className='buttonContainer'>
-            <StartButton 
-              className='start' 
-              onClick={
-                !this.state.active ? 
-                  this.startGame : 
-                  undefined}
-            >
+            <StartButton className='start' onClick={this.startGame}>
               Start
-            </StartButton>
-            <StartButton 
-              className='restart' 
-              onClick={
-                this.state.active ? 
-                  this.startGame : 
-                  undefined}
-            >
-              Restart
             </StartButton>
           </ButtonContainer>
 
@@ -280,16 +253,6 @@ height: 60px;
 width: 60px;
 background-color: green;
 color: white;
-`
-
-const MoveDisplay = styled.div`
-background-color: black;
-color: white;
-height: 30px;
-width: 60px;
-display: flex;
-justify-content: center;
-align-items: center;
 `
 
 const Title = styled.h1`
