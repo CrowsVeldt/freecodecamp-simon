@@ -87,13 +87,14 @@ class App extends Component {
   checkInput = (number) => {
     const sequence = this.state.gameSequence
     const inputLength = this.state.playerInput.length
+    const correctMatch = number === sequence[inputLength -1]
 
-    if (this.state.strictMode === true && number !== sequence[inputLength - 1]) {
+    if (!correctMatch && this.state.strictMode === true && this.state.active) {
       this.setState({
         displayValue: '!!!!!'
       })
       setTimeout(this.startGame, 1000)
-    } else if (number !== sequence[inputLength - 1]) {
+    } else if (!correctMatch && this.state.active) {
       this.setState({
         playerInput: [],
         displayValue: '!!!!!'
@@ -144,9 +145,7 @@ class App extends Component {
   render () {
     return (
       <Game className='game'>
-
         <CenterPanel className='centerPanel'>
-
           <Title className='title'>
             Simon
           </Title>
@@ -163,7 +162,6 @@ class App extends Component {
               Start
             </StartButton>
           </ButtonContainer>
-
         </CenterPanel>
 
         <ColorButton

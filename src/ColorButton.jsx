@@ -53,6 +53,15 @@ const Button = styled.button`
         : 'RGB(255, 255, 0)'
       };
   }
+  
+  &:focus {
+    outline: none;
+  }
+  
+  //Remove the focus outline for FireFox:
+  &::-moz-focus-inner {
+    border: 0;
+  }
 `
 
 export default ColorButton
